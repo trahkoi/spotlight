@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183c37">
+  <title>Dance round planner</title>
+  <link rel="stylesheet" href="styles.css?v=9173d53a1804">
+  <script src="pairing.js?v=1b91b0d649a3" defer></script>
+  <script src="app.js?v=ce84e58349dd" defer></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <h1>Dance round planner</h1>
+    </header>
+    <div class="storage-controls"><p id="storage-status" class="memory-note" role="status">Dancers and history are saved in this browser. Generated rounds are not saved.</p><button id="clear-data" type="button" class="secondary">Clear saved data</button></div>
+    <p id="message" role="status" aria-live="polite"></p>
+    <section class="card roster-card" aria-labelledby="roster-title">
+        <div class="section-heading"><span class="step">01</span><h2 id="roster-title">Add dancers</h2></div>
+        <p>Enter one name per line. Each participant must have one role.</p>
+        <form id="roster-form" novalidate>
+          <div class="roster-fields"><div><label for="leaders">Leaders <span id="leader-count" class="count">0</span></label><textarea id="leaders" rows="7" placeholder="One leader per line" spellcheck="false"></textarea></div><div><label for="followers">Followers <span id="follower-count" class="count">0</span></label><textarea id="followers" rows="7" placeholder="One follower per line" spellcheck="false"></textarea></div></div>
+          <button type="submit" class="secondary">Update participants</button><p id="roster-note" class="hint">Edit these lists anytime. Counts for remaining pairs are kept.</p>
+        </form>
+      </section>
+    <section class="card history-card" aria-labelledby="history-title">
+      <div class="section-heading"><span class="step">02</span><h2 id="history-title">Set history</h2></div>
+      <p>Tap a number to add one shared dance. Enable editing to type a count or correct it.</p>
+      <label class="edit-counts"><input id="edit-counts" type="checkbox"> Edit counts</label>
+      <div id="history" class="table-scroll"></div>
+    </section>
+    <section class="card generation-card" aria-labelledby="generate-title">
+        <div class="section-heading"><span class="step">03</span><h2 id="generate-title">Generate rounds</h2></div>
+        <p>Each round includes everyone. With uneven groups, extra dances are shared evenly.</p>
+        <form id="generate-form" novalidate><label for="round-count">Number of rounds</label><input id="round-count" type="number" min="1" step="1" value="3" required><button id="generate" type="submit">Generate rounds</button></form>
+        <p class="hint">Pairings favor partners with fewer shared dances. History changes only when you record your rounds.</p>
+      </section>
+    <section class="card results-card" aria-labelledby="results-title">
+      <div class="section-heading"><h2 id="results-title">Generated rounds</h2><span id="plan-status" class="tag">No plan</span></div>
+      <p id="plan-note">Add dancers, set history, then generate rounds.</p>
+      <div id="results" class="rounds"></div>
+      <div id="plan-actions" class="actions" hidden><button id="record">Add rounds to history</button><button id="regenerate" class="secondary">Regenerate</button><button id="discard" class="quiet">Discard plan</button></div>
+    </section>
+  </main>
+</body>
+</html>

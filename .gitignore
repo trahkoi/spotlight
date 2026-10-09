@@ -1,0 +1,17 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+
+# Node dependencies and test coverage
+node_modules/
+coverage/
+.nyc_output/
+npm-debug.log*
+
+# Local project archive
+/spotlight.tar.gz
